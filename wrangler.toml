@@ -1,0 +1,17 @@
+name = "worker"
+# type = "javascript" is required to use the `[build]` section
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[build]
+command = "npm install && npm run build"
+# The "modules" upload format is required for all projects that implement a Durable Object namespace.
+upload_format = "modules"
+# Make sure we don't upload the sourcemap as part of the bundle
+upload_exclude = ["*.map"]
+
+[durable_objects]
+classes = [{binding = "Counter", class_name = "Counter"}]
