@@ -1,38 +1,46 @@
 export class Counter {
   constructor(state, env) {
-    this.storage = state.storage
+    this.state = state;
   }
 
   async initialize() {
-    let stored = await this.storage.get('value')
-    this.value = stored || 0
+    try {
+      let stored = await this.state.storage.get("value");
+      this.value = stored || 0;
+    } catch (err) {
+      // If anything throws during initialization then we
+      // need to be sure that a future request will retry by
+      // creating another `initializePromise` below.
+      this.initializePromise = undefined;
+      throw err;
+    }
   }
 
   // Handle HTTP requests from clients.
   async fetch(request) {
     // Make sure we're fully initialized from storage.
     if (!this.initializePromise) {
-      this.initializePromise = this.initialize()
+      this.initializePromise = this.initialize();
     }
-    await this.initializePromise
+    await this.initializePromise;
 
     // Apply requested action.
-    let url = new URL(request.url)
-    let currentValue = this.value
+    let url = new URL(request.url);
+    let currentValue = this.value;
     switch (url.pathname) {
-      case '/increment':
-        currentValue = ++this.value
-        await this.storage.put('value', this.value)
-        break
-      case '/decrement':
-        currentValue = --this.value
-        await this.storage.put('value', this.value)
-        break
-      case '/':
-        // Just serve the current value. No storage calls needed!
-        break
-      default:
-        return new Response('Not found', { status: 404 })
+    case "/increment":
+      currentValue = ++this.value;
+      await this.state.storage.put("value", this.value);
+      break;
+    case "/decrement":
+      currentValue = --this.value;
+      await this.state.storage.put("value", this.value);
+      break;
+    case "/":
+      // Just serve the current value. No storage calls needed!
+      break;
+    default:
+      return new Response("Not found", {status: 404});
     }
 
     // Return `currentValue`. Note that `this.value` may have been
@@ -40,6 +48,6 @@ export class Counter {
     // yielded the event loop to `await` the `storage.put` above!
     // That's why we stored the counter value created by this
     // request in `currentValue` before we used `await`.
-    return new Response(currentValue)
+    return new Response(currentValue);
   }
 }
