@@ -14,4 +14,4 @@ upload_format = "modules"
 upload_exclude = ["*.map"]
 
 [durable_objects]
-classes = [{binding = "Counter", class_name = "Counter"}]
+classes = [{binding = "COUNTER", class_name = "Counter"}]
