@@ -1,5 +1,7 @@
 # 👷 Durable Objects Counter template
 
+## NOTE: You must be using wrangler 1.16 or newer to use this template
+
 A template for kick starting a Cloudflare Workers project using:
 
 - Durable Objects
@@ -10,7 +12,5 @@ A template for kick starting a Cloudflare Workers project using:
 Worker code is in `src/`. The Durable Object `Counter` class is in `src/counter.mjs`, and the eyeball script is in `index.mjs`.
 
 Rollup is configured to output a bundled ES Module to `dist/index.mjs`.
-
-- This bundle is also configured to be the main module, using the `module` key in `package.json`.
 
 On your first publish, you must use `wrangler publish --new-class` to allow the Counter class to implement Durable Objects.

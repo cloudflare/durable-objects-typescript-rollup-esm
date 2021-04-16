@@ -8,10 +8,9 @@ zone_id = ""
 
 [build]
 command = "npm install && npm run build"
-# The "modules" upload format is required for all projects that implement a Durable Object namespace.
-upload_format = "modules"
-# Make sure we don't upload the sourcemap as part of the bundle
-upload_exclude = ["*.map"]
+# The "modules" upload format is required for all projects that export a Durable Objects class
+upload.format = "modules"
+upload.main = "./index.mjs"
 
 [durable_objects]
 bindings = [{name = "COUNTER", class_name = "Counter"}]
