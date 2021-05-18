@@ -14,4 +14,4 @@ format = "modules"
 main = "./index.mjs"
 
 [durable_objects]
-bindings = [{name = "COUNTER", class_name = "Counter"}]
+bindings = [{name = "COUNTER", class_name = "CounterTs"}]
