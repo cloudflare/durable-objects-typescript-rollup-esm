@@ -1,11 +1,11 @@
-# Durable Objects Typescript Counter template
+# Durable Objects TypeScript Counter template
 
 ## NOTE: You must be using wrangler 1.16.0-durable-objects.rc.0 or newer to use this template
 
 A template for kick starting a Cloudflare Workers project using:
 
 - Durable Objects
-- Typescript
+- TypeScript
 - Modules (ES Modules to be specific)
 - Rollup
 - Wrangler
