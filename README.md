@@ -6,6 +6,7 @@ A template for kick starting a Cloudflare Workers project using:
 
 - Durable Objects
 - TypeScript
+- Jest for unit testing
 - Modules (ES Modules to be specific)
 - Rollup
 - Wrangler
@@ -13,5 +14,7 @@ A template for kick starting a Cloudflare Workers project using:
 Worker code is in `src/`. The Durable Object `CounterTs` class is in `src/counter.ts`, and the eyeball script is in `index.ts`.
 
 Rollup is configured to output a bundled ES Module to `dist/index.mjs`.
+
+There's an example test in `src/index.test.ts`, to run tests use `npm test`.
 
 On your first publish, you must use `wrangler publish --new-class CounterTs` to allow the CounterTs class to implement Durable Objects.
