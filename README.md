@@ -15,6 +15,6 @@ Worker code is in `src/`. The Durable Object `CounterTs` class is in `src/counte
 
 Rollup is configured to output a bundled ES Module to `dist/index.mjs`.
 
-There's an example test in `src/index.test.ts`, to run tests use `npm test`.
+There's an example unit test in `src/index.test.ts`, which will run as part of `wrangler build`.   To run tests on their own use `npm test`.
 
 On your first publish, you must use `wrangler publish --new-class CounterTs` to allow the CounterTs class to implement Durable Objects.
