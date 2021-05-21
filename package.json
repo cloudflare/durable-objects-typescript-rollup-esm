@@ -18,6 +18,7 @@
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/is-odd": "^3.0.0",
     "@types/jest": "^26.0.23",
+    "isomorphic-fetch": "^3.0.0",
     "jest": "^26.6.3",
     "prettier": "^1.19.1",
     "rollup": "^2.36.1",
