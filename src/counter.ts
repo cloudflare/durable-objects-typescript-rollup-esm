@@ -1,7 +1,6 @@
 export class CounterTs {
   value: number = 0
   state: DurableObjectState
-  initializePromise: Promise<void> | undefined
 
   constructor(state: DurableObjectState, env: Env) {
     this.state = state;
