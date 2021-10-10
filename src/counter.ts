@@ -1,10 +1,3 @@
-// can be removed once https://github.com/cloudflare/workers-types/pull/106 is merged
-declare global {
-  interface DurableObjectState {
-    blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>
-  }
-}
-
 export class CounterTs {
   value: number = 0
   state: DurableObjectState
