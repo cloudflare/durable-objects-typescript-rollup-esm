@@ -22,7 +22,6 @@
     "prettier": "^1.19.1",
     "rollup": "^2.58.0",
     "rollup-plugin-esbuild": "^4.5.0",
-    "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.4.3"
   },
   "dependencies": {

@@ -1,5 +1,4 @@
 import esbuild from 'rollup-plugin-esbuild'
-import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: 'src/index.ts',
@@ -13,7 +12,7 @@ export default {
     esbuild({
       // required for resolving modules
       experimentalBundling: true,
+      minify: true,
     }),
-    terser(),
   ],
 }
