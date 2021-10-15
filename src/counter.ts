@@ -1,10 +1,3 @@
-// can be removed once https://github.com/cloudflare/workers-types/pull/106 is merged
-declare global {
-  interface DurableObjectState {
-    blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>
-  }
-}
-
 export class CounterTs {
   value: number = 0
   state: DurableObjectState
@@ -14,7 +7,7 @@ export class CounterTs {
     // `blockConcurrencyWhile()` ensures no requests are delivered until
     // initialization completes.
     this.state.blockConcurrencyWhile(async () => {
-        let stored = await this.state.storage.get<number>("value");
+        let stored = await this.state.storage?.get<number>("value");
         this.value = stored || 0;
     })
   }
@@ -27,11 +20,11 @@ export class CounterTs {
     switch (url.pathname) {
     case "/increment":
       currentValue = ++this.value;
-      await this.state.storage.put("value", this.value);
+      await this.state.storage?.put("value", this.value);
       break;
     case "/decrement":
       currentValue = --this.value;
-      await this.state.storage.put("value", this.value);
+      await this.state.storage?.put("value", this.value);
       break;
     case "/":
       // Just serve the current value. No storage calls needed!
