@@ -1,17 +1,12 @@
 name = "worker"
-# type = "javascript" is required to use the `[build]` section
-type = "javascript"
 account_id = ""
 workers_dev = true
 route = ""
 zone_id = ""
+main = "./dist/index.mjs"
 
 [build]
 command = "npm install && npm test && npm run build"
-[build.upload]
-# The "modules" upload format is required for all projects that export a Durable Objects class
-format = "modules"
-main = "./index.mjs"
 
 [durable_objects]
 bindings = [{name = "COUNTER", class_name = "CounterTs"}]
