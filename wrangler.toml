@@ -1,9 +1,6 @@
 name = "worker"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
 main = "./dist/index.mjs"
+compatibility_date = "2022-09-08"
 
 [build]
 command = "npm install && npm test && npm run build"
