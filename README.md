@@ -19,3 +19,18 @@ Worker code is in `src/`. The Durable Object `CounterTs` class is in `src/counte
 Rollup is configured to output a bundled ES Module to `dist/index.mjs`.
 
 There's an example unit test in `src/index.test.ts`, which will run as part of `wrangler build`.   To run tests on their own use `npm test`.
+
+Once you have published the worker, you can interact with it as follows:
+
+```
+bash-3.2$ curl worker.your-account-name.workers.dev/
+Select a Durable Object to contact by using the `name` URL query string parameter. e.g. ?name=A
+bash-3.2$ curl worker.your-account-name.workers.dev/?name=A
+Durable Object 'A' 0 is even
+bash-3.2$ curl worker.your-account-name.workers.dev/increment?name=A
+Durable Object 'A' 1 is odd
+bash-3.2$ curl worker.your-account-name.workers.dev/increment?name=A
+Durable Object 'A' 2 is even
+bash-3.2$ curl worker.your-account-name.workers.dev/decrement?name=A
+Durable Object 'A' 1 is odd
+```
